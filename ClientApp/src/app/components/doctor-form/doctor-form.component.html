@@ -1,0 +1,76 @@
+<div style="text-align:center">
+    <h1>Medicare Hospital Limited</h1>
+    <h2>Doctor's Information</h2>
+</div>
+<hr />
+<p>
+    <a [routerLink]="['/doctor']" class="btn btn-primary">Back to List</a>
+</p>
+<form #f="ngForm" (ngSubmit)="submit()">
+    <table>
+        <tr>
+            <td>
+                <label for="name">Name</label>
+            </td>
+            <td>
+                <input type="text" id="name" class="form-control" [(ngModel)]="doctor.name" name="name" required #name="ngModel" />
+                <div class="alert alert-danger" *ngIf="name.touched && !name.valid">Please Enter Name</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="address">Address</label>
+            </td>
+            <td>
+                <input type="text" id="address" class="form-control" [(ngModel)]="doctor.address" name="address" required #address="ngModel" />
+                <div class="alert alert-danger" *ngIf="address.touched && !address.valid">Please Enter Address</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="cellPhone">Cell Phone</label>
+            </td>
+            <td>
+                <input type="text" id="cellPhone" class="form-control" [(ngModel)]="doctor.cellPhone" name="cellPhone" required #cellPhone="ngModel" />
+                <div class="alert alert-danger" *ngIf="cellPhone.touched && !cellPhone.valid">Please Enter Cell Phone</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="birthDate">Birth Date</label>
+            </td>
+            <td>
+                <input type="date" id="birthDate" class="form-control" [(ngModel)]="doctor.birthDate" name="birthDate" required #birthDate="ngModel" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="status">Status</label>
+            </td>
+            <td>
+                <input type="checkbox" id="status" class="form-control" [(ngModel)]="doctor.status" name="status" required #status="ngModel" />
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="departmentName">Department</label>
+            </td>
+            <td>
+                <select class="form-control" id="departmentID" [(ngModel)]="doctor.departmentID" name="departmentID" required #departmentID="ngModel">
+                    <option [ngValue]="0">--Select Department--</option>
+                    <option *ngFor="let dep of departmentList" [ngValue]="dep.departmentID">{{dep.departmentName}}</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <!--<input type="submit" class="btn btn-primary" [disabled]="!f.valid" value="Add" *ngIf="!doctor.doctorID" />-->
+                <input type="submit" class="btn btn-primary" value="Add" *ngIf="!doctor.doctorID" />
+
+                <input type="submit" class="btn btn-info" value="Update" *ngIf="doctor.doctorID" />
+            </td>
+        </tr>
+    </table>
+
+</form>

@@ -1,0 +1,41 @@
+<div style="background-color:azure">
+    <div style="text-align:center">
+        <h1><i>Medicare Hospital Limited</i></h1>
+        <h2>Doctor's Information</h2>
+    </div>
+    <p>
+        <a class="btn btn-primary" [routerLink]="['/doctor/new']">Add</a>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Doctor ID</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Cell Phone</th>
+                <th>DOB</th>
+                <th>Status</th>
+                <th>Department</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let t of doctors">
+                <td>{{t.doctorID}}</td>
+                <td>{{t.name}}</td>
+                <td>{{t.address}}</td>
+                <td>{{t.cellPhone}}</td>
+                <td>{{t.birthDate|date:shortDate}}</td>
+                <td>{{t.status}}</td>
+                <td>{{t.departmentID}}</td>
+                <td>
+                    <a class="btn btn-warning" [routerLink]="['/doctor/', t.doctorID]">Edit</a>
+                    <button class="btn btn-danger" (click)="delete(t.doctorID)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+

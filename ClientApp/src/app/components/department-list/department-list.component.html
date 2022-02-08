@@ -1,0 +1,33 @@
+<div style="background-color:darkseagreen">
+    <div style="text-align:center">
+        <h1><i>Medicare Hospital Limited</i></h1>
+        <h2>Department Information</h2>
+    </div>
+    <p>
+        <a class="btn btn-primary" [routerLink]="['/department/new']">Add</a>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Department ID</th>
+                <th>Department Name</th>
+                <th>Available Seat</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let d of departments">
+                <td>{{d.departmentID}}</td>
+                <td>{{d.departmentName}}</td>
+                <td>{{d.availableSeat}}</td>
+                <td>
+                    <a class="btn btn-warning" [routerLink]="['/department/', d.departmentID]">Edit</a>
+                    <button class="btn btn-danger" (click)="delete(d.departmentID)">Delete</button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
